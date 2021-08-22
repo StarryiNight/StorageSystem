@@ -1,0 +1,28 @@
+syntax="proto3";
+package services;
+option go_package = "/proto";
+message ProdRequest{
+  string key=1;
+}
+
+message ProdResponse{
+  string value=1;
+}
+
+message ProdRegister{
+  string key=1;
+  string value=2;
+}
+
+
+
+service ProdService{
+  rpc GetProdStock(ProdRequest)
+      returns (ProdResponse);
+  rpc RegisterProdStock(ProdRegister)
+      returns (ProdResponse);
+  rpc UpdateProdStock(ProdRegister)
+      returns (ProdResponse);
+  rpc DeleteProdStock(ProdRequest)
+      returns (ProdResponse);
+}
